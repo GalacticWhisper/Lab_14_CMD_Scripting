@@ -1,34 +1,37 @@
 import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import static java.lang.System.out;
+import java.io.FileReader;
 import java.nio.file.Files;
 import java.nio.file.Path;
-
+import java.nio.file.Paths;
 import static java.nio.file.StandardOpenOption.CREATE;
 import javax.swing.JFileChooser;
 import java.util.ArrayList;
+import java.util.Scanner;
 
-public class FileScan {
-    public static void main(String[] args) {
+public class Main {
+    public static void main(String[] args ) {
 
         boolean bean = true;
+        if(args.length <= 0) // This runs if there is no command line argument.
+        {
+        String rec = "";
+        ArrayList<String> lines = new ArrayList<>();
+        JFileChooser chooser = new JFileChooser();
+        chooser.setCurrentDirectory(new File("src"));
+        int result = chooser.showOpenDialog(chooser);
 
-        if(args = "FewWords.txt")
-        {
-        {
-            System.out.println("Beans and such"); // This prints if there is a command line.
-        }
-        else // This runs if there is no command line. This is the original behavior of the program.
-        {
-            String rec = "";
-            ArrayList<String> lines = new ArrayList<>();
-            JFileChooser chooser = new JFileChooser();
-            chooser.setCurrentDirectory(new File("src"));
-            int result = chooser.showOpenDialog(chooser);
+
 
 
             try {
@@ -82,6 +85,10 @@ public class FileScan {
             } catch (IndexOutOfBoundsException e) {
                 e.printStackTrace();
             }
+        }
+        else
+        {
+            System.out.println("Command line argument found."); // This runs if there is a command line argument.
         }
     }
 }
